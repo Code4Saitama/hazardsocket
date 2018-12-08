@@ -1,0 +1,415 @@
+html,body{
+    margin 0;
+    padding 0;
+    background-color: #FFF4E0;
+}
+
+.headermenu {
+    background-color: #FB7D79;
+}
+
+.headermenu.navbar-default .navbar-nav>li>a,
+.headermenu.navbar-default .navbar-brand{
+    color: #FFFFFF;
+    font-size: 100%;
+}
+
+.container{
+    background-color: #FFF4E0;
+}
+.main_contents{
+    padding: 10px;
+    background-color: #FFF4E0;
+}
+.title{
+    font-size: 120%;
+    padding: 10px;
+}
+
+.square_btn{
+    display: table-cell;
+    padding: 0.5em 1em;
+    margin: 0 auto;
+    text-decoration: none;
+    color: #000000;/*ボタン色より暗く*/
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    border-bottom: solid 3px #627295;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 160%;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+    height: 90px;
+    max-width: 160px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.square_btn:active   {
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+}
+
+.square_btn.gps{
+    background: #7FB6F5;/*ボタン色*/
+}
+
+.square_btn.station{
+    background: #E07581;/*ボタン色*/
+}
+
+.row {
+    width: 100%;
+    margin: 15px auto;
+}
+
+.main_title{
+    font-size: 200%;
+    width: 100%;
+
+}
+
+.main_contents{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.tw{
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.children {
+    width: 250px;
+    height: 190px;
+    display: block;
+    margin-left: 400px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #FF0000;
+}
+
+footer a{
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#container{
+    flex-grow: 1;
+}
+
+.landmark {
+    background: url('/img/button.gif') repeat-x;
+    width: 120px;
+    height: 30px;
+    margin: 5px;
+    color: black;
+}
+
+    .graph dt{
+      padding : 5px;
+      height: 30px;
+      width : 80px;
+    /* 左寄せ */
+      float : left;
+    /* float解除 */
+      clear : both;
+    }
+
+    .graph dd{
+      padding : 5px;
+      height: 30px;
+      width : 300px;
+    /* dtの幅分の設定 */
+      margin-left : 80px;
+    }
+
+    dd .gh_border{
+        background-color: lightgray;
+        font-size: 90%;
+    }
+
+    .container-small{
+        max-width: 400px;
+    }
+
+    .title{
+        font-size: 120%;
+    }
+
+    .font-large{
+        font-size: 200%;
+    }
+    .square_btn{
+        display: block;
+        padding: 0.5em 1em;
+        margin: 0 auto;
+        text-decoration: none;
+        background: #668ad8;/*ボタン色*/
+        color: #FFFFFF;/*ボタン色より暗く*/
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+        border-bottom: solid 3px #627295;
+        border-radius: 15px;
+        font-weight: bold;
+        font-size: 150%;
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .square_btn:active   {
+        -ms-transform: translateY(4px);
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+        border-bottom: none;
+    }
+
+    .row {
+        width: 100%;
+        margin: 15px auto;
+    }
+
+    table.type01 td {
+      text-align: center;
+    }
+
+    div.parkname {
+      /*float:left;*/
+      width:200px;
+    }
+
+    div.wentpark {
+      /*float:right;*/
+      width:200px;
+    }
+
+    h2 {
+      margin-bottom: 0px;
+    }
+
+    .permit {
+        width: 100%;
+    }
+
+    .dtl {
+        text-align: center;
+        padding: 3px;
+    }
+
+    .green {
+        color: white;
+        background-color: #85e024;
+        border: 1px solid #85e024;
+        padding: 2px;
+        border-radius: 5px
+    }
+
+    .red {
+        color: white;
+        background-color: red;
+        border: red 1px solid;
+        padding: 2px;
+        border-radius: 5px
+    }
+
+    .gray{
+        color: white;
+        background-color: gray;
+        border: gray 1px solid;
+        padding: 2px;
+        border-radius: 5px
+    }
+
+    #streetview{
+        height: 200px;
+        width: 80%;
+    }
+
+    .rank {
+        height: 60px;
+        background: url('/img/bg.png') repeat-x;
+        margin: 2px;
+        border-left: 1px solid #D2C6C6;
+        border-right: 1px solid #D2C6C6;
+        border-radius: 5px;        /* CSS3草案 */
+        -webkit-border-radius: 5px;    /* Safari,Google Chrome用 */
+        -moz-border-radius: 5px;   /* Firefox用 */
+        text-align: center;
+        padding-top: 5px;
+    }
+
+.menu {
+    width: 100%;
+}
+.menu td {
+    width: 33%;
+    padding: 10px;
+}
+
+.memu td {
+
+}
+.menu .map{
+    background-color: #FFBC61;
+    color: white;
+    font-size: 120%;
+    text-align: center;
+
+}
+
+.menu .post{
+    background-color: gray;
+    color: white;
+    text-align: center;
+    border: gray solid 1px;
+}
+
+.menu .post a{
+    color: white;
+    text-align: center;
+}
+.list-group td{
+    padding: 4px;
+}
+.items{
+    display: table-cell;
+    padding: 5px;
+}
+.ok_item {
+    background-color: green;
+    font-weight: bold;
+    color: white;
+    padding: 2px;
+    font-size: 120%:
+    border: 1px solid green;
+    border-radius: 2px;
+}
+
+.ng_item {
+    background-color: gray;
+    font-weight: bold;
+    color: white;
+    padding: 2px;
+    font-size: 120%:
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+.list{
+    width: 98%;
+    border-color: white solid white;
+    border-radius: 3px;
+    background-color: white;
+}
+.list td{
+    padding: 3px;
+}
+
+    iframe{
+        width: 100%;
+        border: none;
+    }
+    .ok{
+        color: blue;
+    }
+    .ng {
+        color: red;
+    }
+    html,body{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+    html{
+        overflow: hidden;
+    }
+
+    body{
+        overflow: scroll;
+    }
+    .list,{
+        height: 50%;
+    }
+
+    .table, .search_list{
+        width: 100%;
+    }
+
+    .search_list{
+        border: 1px solid black;
+    }
+    .c-1, .c-3{
+        width: 20%;
+    }
+
+    .c-3 img{
+        width: 90%;
+    }
+label{
+    margin-right: 10px;
+}
+
+input[type="checkbox"],
+input[type="radio"]{
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.post_data{
+    background-color: #EFEFEF;
+    border: #333333 solid 1px;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.post_data .post_image{
+    max-width: 60%;
+}
+
+.emoji{
+    font-size: 36px;
+}
+
+.gmap {
+    width: 50px;
+    height: 50px;
+    background: url(/img/gmap.png) no-repeat;
+    display: table-cell;
+    color: black;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.walk {
+    width: 50px;
+    height: 50px;
+    background: url(/img/walk.png) no-repeat;
+    display: table-cell;
+    color: black;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.list_mark {
+    width: 24px;
+    height: 24px;
+}
+
+img.park_noimage {
+    width: 50%;
+}
+
+img.top_img{
+    display: block;
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 50px;
+    margin: 5px auto;
+}

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>各チームマップ</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <!-- Le styles -->
+    <style>
+    body {
+    }
+    .starter-template {
+      padding: 40px 15px;
+      text-align: center;
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/colorbox/colorbox.css"/>
+    <script type="text/javascript" src="/js/colorbox/jquery.colorbox.js"></script>
+    <script type="text/javascript" src="/js/colorbox/i18n/jquery.colorbox-ja.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script src="/js/leaflet.ajax.js"></script>
+    <link rel="stylesheet" href="//xguaita.github.io/Leaflet.MapCenterCoord/dist/L.Control.MapCenterCoord.min.css" />
+    <script src="//xguaita.github.io/Leaflet.MapCenterCoord/dist/L.Control.MapCenterCoord.min.js"></script>
+    <script src="./socket.io/node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        // 1.イベントとコールバックの定義
+        var socketio = io('http://mq-sol.jp:8080');
+
+        socketio.on("connected", function(name) {});
+        socketio.on("publish", function (data) { addMessage(data.value); });
+        socketio.on("disconnect", function () {});
+
+        // 2.イベントに絡ませる関数の定義
+        function start(name) {
+          socketio.emit("connected", name);
+        }
+
+        $("#send").click(function() {
+            var cLatLng = map.getCenter();
+            console.log(cLatLng);
+            var slat = cLatLng.lat;
+            var slng = cLatLng.lng;
+            var data = {
+                subject: $("#subject").val(),
+                message: $("#message").val(),
+                latitude: $("#latitude").val() || slat,
+                longitude: $("#longitude").val() || slng,
+            };
+            $("input").each(function(){
+                $(this).val('');
+            });
+            socketio.emit("publish", data);
+        });
+
+        function addMessage (msg) {
+        }
+
+        // 3.開始処理
+        var msgArea = document.getElementById("msg");
+        var myName = Math.floor(Math.random()*100) + "さん";
+    });
+    </script>
+  </head>
+  <body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <nav class="headermenu navbar navbar-default">
+        <!--デフォルトのスタイリングをリセットしたい場合、navbar-default を削除。-->
+        <div class="container-fluid">
+          <div class="navbar-header">
+
+            <!--ハンバーガー-->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--//ハンバーガー-->
+
+            <!--左ロゴ-->
+            <a class="navbar-brand" href="/">各チーム状況依頼マップ</a><!--左上のロゴ部分-->
+            <!--//左ロゴ-->
+
+          </div>
+
+          <!-- メニュー　li が項目。必要な分だけ li をコピペで増やす。-->
+          <div class="collapse navbar-collapse" id="site-menu">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">このアプリについて</a></li>
+            </ul>
+          </div>
+          <!--  -->
+
+        </div>
+      </nav>
+     <!--ここまで-->
+
+
+<style>
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+
+.main_contents {
+    min-height: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+#map_canvas {
+    background-color: #EEE;
+}
+
+#toolbox {
+    min-height: 15%;
+    padding: 10px;
+    background-color: #FEFEFE;
+
+}
+#map_canvas, #toolbox{
+    margin: 10px auto;
+    width: 99%;
+    height: 100%;
+}
+
+.main_title p{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+    margin-bottom: 2px;
+}
+
+.main{
+    height: calc(100% - 100px);
+    overflow: scroll;
+}
+
+.map_area, .task_area {
+    height: 50%;
+}
+</style>
+<div class="row main">
+    <div class="col-md-8 map_area">
+        <div id="map_canvas"></div>
+    </div>
+    <div class="col-md-4 task_area">
+        報告事項
+        <form>
+            <label for="subject" class="label-control">件名</label>
+            <input type="text" class="form-control" name="subject" id="subject">
+            <label for="message" class="label-control">状況</label>
+            <input type="text" class="form-control" name="message" id="message">
+            <p>送信位置は中央の十字アイコンの緯度経度になります。</p>
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+            <button type="button" id="send">送信</button>
+        </form>
+    </div>
+</div>
+<script>
+var gps=false;
+//地図のデフォルト値
+//35.61726475358062, lng: 139.73176002502439
+var map = L.map('map_canvas').fitWorld();
+
+map.setView([35.815758, 139.677989], 16);
+
+map.on("moveend", function () {
+    console.log(map.getCenter().toString());
+    var lat = map.getCenter().lat;
+    var lng = map.getCenter().lng;
+    $("#latitude").val(lat);
+    $("#longitude").val(lng);
+
+});
+
+L.control.mapCenterCoord({
+    latlngFormat: 'DM',
+    latlngDesignators: true
+}).addTo(map);
+//OSMレイヤー追加
+
+var osm = L.tileLayer(
+    '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    ,{
+        attribution: 'Map data c <a href="http://openstreetmap.org">OpenStreetMap</a>',
+        maxZoom: 18
+    }
+).addTo(map);
+
+// singleclick（mapに設定）
+map.on('click',function ( e ) {
+    console.log(e);
+} );
+
+
+function onEachFeature_SG(feature, layer) {
+    if (feature.properties && feature.PLN_AREA_N) {
+      layer.bindPopup(feature.properties.PLN_AREA_N);
+    }
+}
+var cLatLng = map.getCenter();
+console.log(cLatLng);
+var slat = cLatLng.lat;
+var slng = cLatLng.lng;
+
+function createCircleMarkerRed( feature, latlng ){
+  // Change the values of these options to change the symbol's appearance
+  var options = {
+    radius: 8,
+    fillColor: "#FF0000",
+    color: "#FF0000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+  }
+  return new L.CircleMarker( latlng, options );
+}
+
+function createCircleMarkerBlue( feature, latlng ){
+    // Change the values of these options to change the symbol's appearance
+    console.log(feature.properties["カテゴリ"]);
+    if ("避難所" == feature.properties["カテゴリ"]){
+        //黄色
+        var options = {
+            radius: 8,
+            fillColor: "#FFCC00",
+            color: "#FFCC00",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        }
+    }else{
+        //青
+        var options = {
+            radius: 8,
+            fillColor: "#0000CD",
+            color: "blue",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        }
+    }
+
+  return new L.CircleMarker( latlng, options );
+}
+
+function createCircleMarkerPink( feature, latlng ){
+  // Change the values of these options to change the symbol's appearance
+  let options = {
+    radius: 8,
+    fillColor: "lightpink",
+    color: "pink",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+  }
+  return new L.CircleMarker( latlng, options );
+}
+
+var Marker = null;
+$(document).ready(function(){
+    $("#btn_gps").click(function(){
+        navigator.geolocation.getCurrentPosition(function(pos){
+            console.log(pos);
+            var lat = pos.coords.latitude;
+            var lng = pos.coords.longitude;
+            map.panTo(new L.LatLng(lat, lng));
+            cLatLng = map.getCenter();
+            console.log(cLatLng);
+            slat = cLatLng.lat;
+            slng = cLatLng.lng;
+        });
+    });
+
+    //住所検索
+    $("#btn_ads").click(function(){
+        var ads = $("#address").val();
+        if (ads.length){
+            var url = "https://map.yahooapis.jp/geocode/V1/geoCoder?output=json&appid=dj00aiZpPW9pOWpEa0liamhKSiZzPWNvbnN1bWVyc2VjcmV0Jng9N2M-&query=" + ads;
+            console.log(url);
+            $.ajax({
+                url: url,
+                dataType: 'jsonp',
+            }).done(function(json) {
+                console.log(json);
+                if (json.ResultInfo.Count){
+                    var f = json.Feature[0];
+                    var latlng = f.Geometry["Coordinates"];
+                    var lat = latlng.split(",")[1] * 1;
+                    var lng = latlng.split(",")[0] * 1;
+                    map.panTo(new L.LatLng(lat, lng));
+                    cLatLng = map.getCenter();
+                    console.log(cLatLng);
+                    slat = cLatLng.lat;
+                    slng = cLatLng.lng;
+                }
+            }).fail(function() {
+                console.log("error");
+            });
+        }
+    });
+
+
+});
+</script>
+
+      </body>
+</html>
+
